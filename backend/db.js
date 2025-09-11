@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const mongooseURI = "mongodb://localhost:27017/";
+const mongooseURI = "mongodb://localhost:27017/betterNotesDB";
 
 const connectToMongo = () => {
   mongoose
