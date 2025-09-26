@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
     <div>
-      <div className="flex justify-between px-20 py-4 mb-1">
+      <div className="flex justify-between items-center gap-4 px-20 py-6 m-4 border-2 border-neutral-200 rounded-sm">
         <Link to="/">
           <img src="./logo.png" alt="Better Notes" width={20} height={20} />
         </Link>
