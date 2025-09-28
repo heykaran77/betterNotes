@@ -12,7 +12,6 @@ connectToMongo();
 app.use("/api/auth", auth);
 app.use("/api/notes", notes);
 
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`BetterNotes listening on port ${port}`);
 });
