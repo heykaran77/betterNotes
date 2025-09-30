@@ -9,7 +9,7 @@ import { Toaster } from "sonner";
 
 const App = () => {
   return (
-    <div>
+    <div className="selection:text-orange-100 selection:bg-orange-400">
       <NotesState>
         <NavBar />
         <Toaster />

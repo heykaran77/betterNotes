@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Card,
   CardContent,
@@ -10,10 +10,16 @@ import {
 import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import noteContext from "@/context/NotesContext";
 
 const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
+
+  const { notes } = useContext(noteContext);
+  const uniqueTags = [...new Set(notes.map((note) => note.tag))];
+  // console.log(uniqueTags);
 
   return (
     <div>
@@ -48,12 +54,28 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
                   placeholder="Eg. Attended a coffee date last weekend..."
                   required
                 />
+                <label htmlFor="tag" className="font-semibold">
+                  Tag
+                </label>
+                <div className="flex gap-2">
+                  {uniqueTags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="default"
+                      className="rounded-lg font-medium cursor-pointer">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter>
-          <Button type="submit" className="w-full" disabled={!title.trim()}>
+          <Button
+            type="submit"
+            className="w-full cursor-pointer disabled:cursor-not-allowed"
+            disabled={!title.trim() || !description.trim()}>
             {cardCTA}
           </Button>
         </CardFooter>
