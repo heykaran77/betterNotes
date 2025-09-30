@@ -4,7 +4,7 @@ import NotesItem from "./NotesItem";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, setnotes } = context;
+  const { notes } = context;
 
   return (
     <div className="font-['gilroy']">

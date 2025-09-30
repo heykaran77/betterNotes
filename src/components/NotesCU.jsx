@@ -16,13 +16,24 @@ import noteContext from "@/context/NotesContext";
 const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
-
-  const { notes } = useContext(noteContext);
+  const { notes, addNote } = useContext(noteContext);
   const uniqueTags = [...new Set(notes.map((note) => note.tag))];
   const [tag, settag] = useState("");
+
   // console.log(uniqueTags);
   const capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  //Handle Submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      title,
+      description,
+      tag,
+    };
+    addNote(data);
   };
 
   return (
@@ -88,7 +99,8 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
           <Button
             type="submit"
             className="w-full cursor-pointer disabled:cursor-not-allowed"
-            disabled={!title.trim() || !description.trim() || !tag.trim()}>
+            disabled={!title.trim() || !description.trim() || !tag.trim()}
+            onClick={handleSubmit}>
             {cardCTA}
           </Button>
         </CardFooter>
