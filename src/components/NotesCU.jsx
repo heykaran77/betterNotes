@@ -19,7 +19,11 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
 
   const { notes } = useContext(noteContext);
   const uniqueTags = [...new Set(notes.map((note) => note.tag))];
+  const [tag, settag] = useState("");
   // console.log(uniqueTags);
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
 
   return (
     <div>
@@ -57,13 +61,22 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
                 <label htmlFor="tag" className="font-semibold">
                   Tag
                 </label>
-                <div className="flex gap-2">
-                  {uniqueTags.map((tag) => (
+                <Input
+                  id="tag"
+                  type="text"
+                  value={tag}
+                  required
+                  placeholder="Ex. Home"
+                  onChange={(e) => settag(capitalize(e.target.value))}></Input>
+
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {uniqueTags.map((t) => (
                     <Badge
-                      key={tag}
-                      variant="default"
-                      className="rounded-lg font-medium cursor-pointer">
-                      {tag}
+                      key={t}
+                      variant={capitalize(tag) == t ? "default" : "outline"}
+                      className="rounded-lg font-medium cursor-pointer"
+                      onClick={() => settag(t)}>
+                      {t}
                     </Badge>
                   ))}
                 </div>
@@ -75,7 +88,7 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
           <Button
             type="submit"
             className="w-full cursor-pointer disabled:cursor-not-allowed"
-            disabled={!title.trim() || !description.trim()}>
+            disabled={!title.trim() || !description.trim() || !tag.trim()}>
             {cardCTA}
           </Button>
         </CardFooter>
