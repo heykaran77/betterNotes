@@ -1,10 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import noteContext from "@/context/NotesContext";
 import NotesItem from "./NotesItem";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes } = context;
+  const { notes, fetchNotes } = context;
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
   return (
     <div className="font-['gilroy']">
