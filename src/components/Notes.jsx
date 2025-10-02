@@ -36,7 +36,6 @@ const Notes = () => {
   }, []);
 
   const updateNote = (note) => {
-    console.log(note);
     setdialogOpen(true);
     setselectedNote(note);
     settag(note.tag || "");
@@ -55,6 +54,7 @@ const Notes = () => {
     };
     console.log(data);
     editNote(data);
+    setdialogOpen(false);
   };
 
   return (

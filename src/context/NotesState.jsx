@@ -4,99 +4,8 @@ import { toast } from "sonner";
 
 const NotesState = (props) => {
   const host = "http://localhost:3000/";
-  const init_notes = [
-    {
-      "_id": "8cfc8c5c32746215",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My First note",
-      "description": "This is a First from me",
-      "tag": "Cafe",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68cfc8c3d27c5965215",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My Second note",
-      "description": "This is a Second note",
-      "tag": "Hotel",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68cfc8cc3d27c759525",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My First note",
-      "description": "This is a First from me",
-      "tag": "Home",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68cfc5c3d27565215",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My Second note",
-      "description": "This is a Second note",
-      "tag": "Hotel",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68cfc8c5c27c759465",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My First note",
-      "description": "This is a First from me",
-      "tag": "School",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68fc8c5c3dc7595216",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My JAMAI note",
-      "description": "This is a Second note",
-      "tag": "GENDU",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "cfc8c5cd27c75946521",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My Second note",
-      "description": "This is a Second note",
-      "tag": "Hotel",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "6cfc8c5c3d27c7594621",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My Second note",
-      "description": "This is a Second note",
-      "tag": "Hotel",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68cfcc5c3d27c759465",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My Second note",
-      "description": "This is a Second note",
-      "tag": "Garage",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-    {
-      "_id": "68cfcc5c7c759465",
-      "user": "68cfb1c77bbc57b3ec615a6a",
-      "title": "My Second note",
-      "description": "This is a Second note",
-      "tag": "Tour",
-      "date": "2025-09-21T09:43:33.815Z",
-      "__v": 0,
-    },
-  ];
-  const [notes, setnotes] = useState(init_notes);
+
+  const [notes, setnotes] = useState([]);
 
   //Fetch Notes
   const fetchNotes = async () => {
@@ -132,6 +41,7 @@ const NotesState = (props) => {
       console.log("Note Added: ", newNote);
     } catch (e) {
       console.log({ error: e });
+      toast.error("Unable to Add note!");
     }
   };
 
@@ -157,6 +67,7 @@ const NotesState = (props) => {
       toast.success("Note Deleted");
     } catch (e) {
       console.log({ error: e });
+      toast.error("Unable to Delete!");
     }
   };
 
@@ -175,7 +86,17 @@ const NotesState = (props) => {
 
       const data = await response.json();
       console.log("Updated: ", data);
-    } catch {}
+
+      setnotes((prevNotes) =>
+        prevNotes.map((n) =>
+          n._id === data.note._id ? { ...n, ...data.note } : n
+        )
+      );
+      toast.success("Edit Successful!");
+    } catch (error) {
+      console.log({ error: e.message });
+      toast.error("Unable to edit!");
+    }
   };
 
   return (
