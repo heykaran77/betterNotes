@@ -61,6 +61,8 @@ const Notes = () => {
     <div className="font-['gilroy']">
       <h1 className="font-semibold text-[clamp(24px,5vw,30px)]">Your Notes</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+        {notes.length == 0 &&
+          "No notes to display, the notes you add will be visible here."}
         {notes.map((note) => (
           <NotesItem key={note._id} note={note} updateNote={updateNote} />
         ))}
