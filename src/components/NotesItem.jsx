@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import { Badge } from "./ui/badge";
 import noteContext from "@/context/NotesContext";
 
-const NotesItem = (props) => {
-  const { _id, user, title, description, tag, date } = props.note;
+const NotesItem = ({ note, updateNote }) => {
+  const { _id, user, title, description, tag, date } = note;
   const { deleteNote } = useContext(noteContext);
   return (
     <div className="border-2 border-dashed px-4 py-6 rounded-sm">
@@ -19,7 +19,10 @@ const NotesItem = (props) => {
           className="cursor-pointer text-red-500"
           onClick={() => deleteNote(_id)}
         />
-        <Edit className="cursor-pointer text-blue-500" />
+        <Edit
+          className="cursor-pointer text-blue-500"
+          onClick={() => updateNote(note)}
+        />
       </div>
     </div>
   );

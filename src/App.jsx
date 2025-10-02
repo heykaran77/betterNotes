@@ -12,7 +12,13 @@ const App = () => {
     <div className="selection:text-orange-100 selection:bg-orange-400">
       <NotesState>
         <NavBar />
-        <Toaster />
+        <Toaster
+          position="top-right"
+          richColors
+          closeButton
+          offset={{ bottom: "12px", top: "96px", right: "12px" }}
+          duration={2000}
+        />
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/dashboard" element={<Dashboard />}></Route>

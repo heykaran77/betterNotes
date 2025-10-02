@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardFooter,
 } from "./ui/card";
-import { Label } from "@radix-ui/react-label";
+import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -53,7 +53,7 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
                   type="text"
                   value={title}
                   onChange={(e) => {
-                    settitle(e.target.value);
+                    settitle(capitalize(e.target.value));
                   }}
                   placeholder="Eg. My Note"
                   required
@@ -64,7 +64,7 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
                   type="text"
                   value={description}
                   onChange={(e) => {
-                    setdescription(e.target.value);
+                    setdescription(capitalize(e.target.value));
                   }}
                   placeholder="Eg. Attended a coffee date last weekend..."
                   required
