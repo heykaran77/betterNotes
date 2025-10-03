@@ -47,7 +47,7 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
           <CardDescription>{cardDescription}</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label className="font-semibold">Title</Label>
@@ -96,23 +96,21 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
                 </div>
               </div>
             </div>
+
+            <Button
+              type="submit"
+              className="w-full cursor-pointer disabled:cursor-not-allowed mt-4"
+              disabled={
+                !title.trim() ||
+                !description.trim() ||
+                !tag.trim() ||
+                title.trim().length < 3 ||
+                description.trim().length < 5
+              }>
+              {cardCTA}
+            </Button>
           </form>
         </CardContent>
-        <CardFooter>
-          <Button
-            type="submit"
-            className="w-full cursor-pointer disabled:cursor-not-allowed"
-            disabled={
-              !title.trim() ||
-              !description.trim() ||
-              !tag.trim() ||
-              title.trim().length < 3 ||
-              description.trim().length < 5
-            }
-            onClick={handleSubmit}>
-            {cardCTA}
-          </Button>
-        </CardFooter>
       </Card>
     </div>
   );

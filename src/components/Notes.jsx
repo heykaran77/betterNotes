@@ -68,8 +68,8 @@ const Notes = () => {
       </div>
       {selectedNote && (
         <Dialog open={dialogOpen} onOpenChange={setdialogOpen}>
-          <form>
-            <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="sm:max-w-[425px]">
+            <form onSubmit={handleSubmit}>
               <DialogHeader>
                 <DialogTitle>Edit Note</DialogTitle>
                 <DialogDescription>
@@ -116,21 +116,20 @@ const Notes = () => {
                   </div>
                 </div>
               </div>
-              <DialogFooter>
+              <DialogFooter className="mt-4">
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DialogClose>
                 <Button
                   type="submit"
-                  onClick={handleSubmit}
                   disabled={
                     title.trim().length < 3 || description.trim().length < 5
                   }>
                   Save changes
                 </Button>
               </DialogFooter>
-            </DialogContent>
-          </form>
+            </form>
+          </DialogContent>
         </Dialog>
       )}
     </div>

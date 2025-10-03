@@ -14,9 +14,21 @@ const NavBar = () => {
         <div className="nav-items flex gap-8">
           <NavLink
             end
+            to="/"
+            className={({ isActive }) =>
+              `font-medium px-3 py-2 rounded-full ${
+                isActive
+                  ? "text-primary border-2 border-orange-400"
+                  : "text-neutral-600 hover:text-neutral-900"
+              }`
+            }>
+            Home
+          </NavLink>
+          <NavLink
+            end
             to="/dashboard"
             className={({ isActive }) =>
-              `font-medium leading-tight transition-colors px-3 py-2 rounded-full ${
+              `font-medium px-3 py-2 rounded-full ${
                 isActive
                   ? "text-primary border-2 border-orange-400"
                   : "text-neutral-600 hover:text-neutral-900"
@@ -28,7 +40,7 @@ const NavBar = () => {
             end
             to="/about"
             className={({ isActive }) =>
-              `font-medium leading-tight transition-colors px-3 py-2 rounded-full ${
+              `font-medium px-3 py-2 rounded-full ${
                 isActive
                   ? "text-primary border-2 border-orange-400"
                   : "text-neutral-600 hover:text-neutral-900"
