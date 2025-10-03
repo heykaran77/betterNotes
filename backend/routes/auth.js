@@ -14,9 +14,11 @@ const router = express.Router();
 router.post(
   "/createuser",
   [
-    body("name", "Enter a valid Name").isLength({ min: 3 }),
+    body("name", "name requires min. 3 characters").isLength({ min: 3 }),
     body("email", "Enter a valid Email").isEmail(),
-    body("password", "Enter a valid Password").isLength({ min: 5 }),
+    body("password", "password requires min. 5 characters").isLength({
+      min: 5,
+    }),
   ],
   async (req, res) => {
     const result = validationResult(req);

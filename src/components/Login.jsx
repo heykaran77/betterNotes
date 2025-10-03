@@ -10,7 +10,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -29,13 +30,14 @@ const Login = () => {
 
       const json = await response.json();
       if (!response.ok) {
-        console.log("Login Failed", json);
+        toast.error(`Login failed: ${json}`);
         return;
       }
       localStorage.setItem("token", json.authToken);
       navigate("/dashboard");
+      toast.success(`Welcome!`);
     } catch (e) {
-      console.log("Network error: ", e);
+      toast.error(`Error: ${e}`);
     }
   };
   return (
@@ -81,11 +83,12 @@ const Login = () => {
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              <a
-                href="#"
+              <NavLink
+                end
+                to="/signup"
                 className="ml-auto inline-block text-sm underline-offset-4 hover:underline font-bold mt-3">
                 Sign Up?
-              </a>
+              </NavLink>
             </div>
           </form>
         </CardContent>

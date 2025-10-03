@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import NotesState from "./context/NotesState";
 import { Toaster } from "sonner";
+import Signup from "./components/Signup";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/dashboard" element={<Dashboard />}></Route>
           <Route exact path="/about" element={<About />}></Route>
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />}></Route>
         </Routes>
       </NotesState>
     </div>
