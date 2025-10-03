@@ -18,7 +18,7 @@ const NotesState = (props) => {
       },
     });
     const data = await response.json();
-    console.log(data);
+
     setnotes(data);
   };
 
@@ -36,9 +36,14 @@ const NotesState = (props) => {
         body: JSON.stringify(note),
       });
       const newNote = await response.json();
+      if (!response.ok) {
+        console.log("Validation Error: ", newNote.errors);
+        toast.error(newNote?.errors?.[0]?.msg || "Unable to add Note!");
+        return;
+      }
+
       setnotes(notes.concat(newNote));
       toast.success("Note Added!");
-      console.log("Note Added: ", newNote);
     } catch (e) {
       console.log({ error: e });
       toast.error("Unable to Add note!");
@@ -58,8 +63,7 @@ const NotesState = (props) => {
         },
       });
       const data = await response.json();
-      console.log(`Deleting note with id: ${id}`);
-      console.log("Deleted Note: ", data);
+
       const newNote = notes.filter((note) => {
         return note._id !== id;
       });
@@ -85,7 +89,6 @@ const NotesState = (props) => {
       });
 
       const data = await response.json();
-      console.log("Updated: ", data);
 
       setnotes((prevNotes) =>
         prevNotes.map((n) =>

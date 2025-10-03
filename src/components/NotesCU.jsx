@@ -99,7 +99,13 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
           <Button
             type="submit"
             className="w-full cursor-pointer disabled:cursor-not-allowed"
-            disabled={!title.trim() || !description.trim() || !tag.trim()}
+            disabled={
+              !title.trim() ||
+              !description.trim() ||
+              !tag.trim() ||
+              title.trim().length < 3 ||
+              description.trim().length < 5
+            }
             onClick={handleSubmit}>
             {cardCTA}
           </Button>

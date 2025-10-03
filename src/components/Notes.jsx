@@ -52,7 +52,6 @@ const Notes = () => {
       description,
       tag,
     };
-    console.log(data);
     editNote(data);
     setdialogOpen(false);
   };
@@ -121,7 +120,12 @@ const Notes = () => {
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DialogClose>
-                <Button type="submit" onClick={handleSubmit}>
+                <Button
+                  type="submit"
+                  onClick={handleSubmit}
+                  disabled={
+                    title.trim().length < 3 || description.trim().length < 5
+                  }>
                   Save changes
                 </Button>
               </DialogFooter>

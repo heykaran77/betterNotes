@@ -20,7 +20,7 @@ router.post(
   "/addnote",
   fetchuser,
   [
-    body("title", "Enter a valid title").isLength({ min: 3 }),
+    body("title", "Min Title Length is 3").isLength({ min: 3 }),
     body("description", "Minimum length for the description is 5").isLength({
       min: 5,
     }),
@@ -29,6 +29,7 @@ router.post(
     const result = validationResult(req);
     if (!result.isEmpty()) {
       res.status(400).json({ errors: result.array() });
+      return;
     }
 
     try {
