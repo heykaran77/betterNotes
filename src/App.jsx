@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import About from "./components/About";
 import Home from "./components/Home";
+import Login from "./components/Login";
 import NotesState from "./context/NotesState";
 import { Toaster } from "sonner";
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/dashboard" element={<Dashboard />}></Route>
           <Route exact path="/about" element={<About />}></Route>
+          <Route exact path="/login" element={<Login />} />
         </Routes>
       </NotesState>
     </div>

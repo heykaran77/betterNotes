@@ -34,6 +34,9 @@ const NotesCU = ({ cardTitle, cardDescription, cardCTA }) => {
       tag,
     };
     addNote(data);
+    settitle("");
+    setdescription("");
+    settag("");
   };
 
   return (
