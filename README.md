@@ -33,16 +33,38 @@ A modern, secure note-taking application built with the MERN stack (MongoDB, Exp
 
 ```
 betterNotes/
-├── src/                    # Frontend source files
-│   ├── components/         # React components
-│   ├── lib/               # Utility functions
-│   └── assets/            # Static assets
-├── backend/               # Backend source files
+├── src/                      # Frontend source files
+│   ├── components/          # React components
+│   │   ├── About.jsx       # About page component
+│   │   ├── Container.jsx   # Layout container component
+│   │   ├── Dashboard.jsx   # Dashboard page component
+│   │   ├── Home.jsx        # Home page component
+│   │   └── NavBar.jsx      # Navigation component
+│   ├── lib/                # Utility functions
+│   │   └── utils.js       # Common utility functions
+│   ├── App.jsx            # Main application component
+│   ├── App.css            # Application styles
+│   ├── index.css          # Global styles
+│   └── main.jsx          # Application entry point
+├── backend/                # Backend source files
 │   ├── models/            # MongoDB models
+│   │   ├── Note.js       # Note model schema
+│   │   └── User.js       # User model schema
 │   ├── routes/            # API routes
+│   │   ├── auth.js       # Authentication routes
+│   │   └── notes.js      # Notes CRUD routes
 │   ├── middleware/        # Custom middleware
-│   └── db.js             # Database configuration
-└── public/               # Public assets
+│   │   └── fetchuser.js  # Auth middleware
+│   ├── db.js             # Database configuration
+│   ├── index.js          # Server entry point
+│   └── package.json      # Backend dependencies
+├── public/                # Public assets
+│   └── logo.png          # Application logo
+├── package.json          # Frontend dependencies
+├── components.json       # UI components config
+├── vite.config.js       # Vite configuration
+├── eslint.config.js     # ESLint configuration
+└── jsconfig.json        # JavaScript configuration
 ```
 
 ## Getting Started 🏃‍♂️

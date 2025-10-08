@@ -25,16 +25,13 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/auth/createuser`,
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userDetails),
-        }
-      );
+      const response = await fetch(`/api/auth/createuser`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userDetails),
+      });
 
       const json = await response.json();
       if (!response.ok) {
@@ -107,7 +104,7 @@ const Signup = () => {
               </div>
             </div>
             <div className="mt-4 flex flex-col">
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full cursor-pointer">
                 Sign Up
               </Button>
               <NavLink

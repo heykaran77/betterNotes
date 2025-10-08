@@ -1,9 +1,14 @@
 import { Bold } from "lucide-react";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <div>
       <div className="flex justify-between items-center gap-4 px-8 py-4 m-4 border-2 border-neutral-200 rounded-sm">
@@ -49,22 +54,30 @@ const NavBar = () => {
             About
           </NavLink>
         </div>
-        <div className="flex gap-4">
-          <Button
-            variant="outline"
-            className="text-primary rounded-full  border-2 border-orange-400">
-            <NavLink end to="/login">
-              Login
-            </NavLink>
+        {localStorage.getItem("token") ? (
+          <Button variant="outline" onClick={handleLogout}>
+            Logout
           </Button>
-          <Button
-            variant="default"
-            className="rounded-full bg-orange-400 text-orange-100">
-            <NavLink end to="/signup">
-              SignUp
-            </NavLink>
-          </Button>
-        </div>
+        ) : (
+          <div className="flex gap-4">
+            <Button
+              asChild
+              variant="outline"
+              className="text-primary rounded-full  border-2 border-orange-400">
+              <NavLink end to="/login" className="cursor-pointer">
+                Login
+              </NavLink>
+            </Button>
+            <Button
+              asChild
+              variant="default"
+              className="rounded-full bg-orange-400 text-orange-100 hover:bg-orange-100 hover:text-orange-400">
+              <NavLink end to="/signup">
+                SignUp
+              </NavLink>
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

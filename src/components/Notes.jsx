@@ -14,10 +14,12 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, fetchNotes, editNote } = context;
+  const navigate = useNavigate();
 
   const [dialogOpen, setdialogOpen] = useState(false);
   const [selectedNote, setselectedNote] = useState(null);
@@ -32,7 +34,11 @@ const Notes = () => {
   };
 
   useEffect(() => {
-    fetchNotes();
+    if (localStorage.getItem("token")) {
+      fetchNotes();
+    } else {
+      navigate("/login");
+    }
   }, []);
 
   const updateNote = (note) => {
