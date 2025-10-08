@@ -40,6 +40,7 @@ betterNotes/
 │   │   ├── Dashboard.jsx   # Dashboard page component
 │   │   ├── Home.jsx        # Home page component
 │   │   └── NavBar.jsx      # Navigation component
+│   ├── context/            # React Context providers
 │   ├── lib/                # Utility functions
 │   │   └── utils.js       # Common utility functions
 │   ├── App.jsx            # Main application component
@@ -63,6 +64,7 @@ betterNotes/
 ├── package.json          # Frontend dependencies
 ├── components.json       # UI components config
 ├── vite.config.js       # Vite configuration
+├── vercel.json          # Vercel deployment config
 ├── eslint.config.js     # ESLint configuration
 └── jsconfig.json        # JavaScript configuration
 ```
