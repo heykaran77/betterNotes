@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import About from "./components/About";
@@ -13,7 +13,6 @@ const App = () => {
   return (
     <div className="selection:text-orange-100 selection:bg-orange-400">
       <NotesState>
-        <NavBar />
         <Toaster
           position="top-right"
           richColors

@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import NavBar from "./NavBar";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -41,59 +42,65 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-200px)]">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  value={credentials.email}
-                  onChange={(e) =>
-                    setCredentials({ ...credentials, email: e.target.value })
-                  }
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+    <>
+      <NavBar />
+      <div className="flex items-center justify-center h-[calc(100vh-200px)]">
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Login to your account</CardTitle>
+            <CardDescription>
+              Enter your email below to login to your account
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-col gap-6">
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
+                    value={credentials.email}
+                    onChange={(e) =>
+                      setCredentials({ ...credentials, email: e.target.value })
+                    }
+                    required
+                  />
                 </div>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  onChange={(e) =>
-                    setCredentials({ ...credentials, password: e.target.value })
-                  }
-                />
+                <div className="grid gap-2">
+                  <div className="flex items-center">
+                    <Label htmlFor="password">Password</Label>
+                  </div>
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    onChange={(e) =>
+                      setCredentials({
+                        ...credentials,
+                        password: e.target.value,
+                      })
+                    }
+                  />
+                </div>
               </div>
-            </div>
-            <div className="mt-4 flex flex-col">
-              <Button type="submit" className="w-full cursor-pointer">
-                Login
-              </Button>
-              <NavLink
-                end
-                to="/signup"
-                className="ml-auto inline-block text-sm underline-offset-4 hover:underline font-bold mt-3">
-                Sign Up?
-              </NavLink>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+              <div className="mt-4 flex flex-col">
+                <Button type="submit" className="w-full cursor-pointer">
+                  Login
+                </Button>
+                <NavLink
+                  end
+                  to="/signup"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline font-bold mt-3">
+                  Sign Up?
+                </NavLink>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
 
