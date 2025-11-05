@@ -71,7 +71,7 @@ const NavBar = () => {
             <Button
               asChild
               variant="default"
-              className="rounded-full bg-orange-400 text-orange-100 hover:bg-orange-100 hover:text-orange-400">
+              className="rounded-full bg-orange-100 text-orange-600 hover:bg-orange-200 hover:text-orange-400">
               <NavLink end to="/signup">
                 SignUp
               </NavLink>
