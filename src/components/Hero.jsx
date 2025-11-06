@@ -54,8 +54,8 @@ const Hero = () => {
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
-              stroke-linecap="round"
-              stroke-linejoin="round">
+              strokeLinecap="round"
+              strokeLinejoin="round">
               <path d="M18 6 6 18" />
               <path d="m6 6 12 12" />
             </svg>
@@ -78,8 +78,8 @@ const Hero = () => {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            stroke-linecap="round"
-            stroke-linejoin="round">
+            strokeLinecap="round"
+            strokeLinejoin="round">
             <path d="M4 12h16" />
             <path d="M4 18h16" />
             <path d="M4 6h16" />
@@ -93,7 +93,7 @@ const Hero = () => {
           Quiet. Focused. Beautiful.
         </button>
       </div>
-      <h5 className="text-3xl md:text-7xl max-w-[850px] text-center mx-auto mt-8 tracking-tighter font-bold">
+      <h5 className="text-2xl md:text-7xl max-w-[850px] text-center mx-auto mt-8 tracking-tighter font-bold px-4 md:px-0">
         Write. Remember. Refine. BetterNotes does the rest.
       </h5>
 

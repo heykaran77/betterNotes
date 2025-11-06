@@ -8,7 +8,9 @@ const Home = () => {
     <>
       <Hero />
       <Features />
-      <Testimonials />
+      <div className="flex items-center justify-center w-full min-h-screen bg-white px-4">
+        <Testimonials />
+      </div>
     </>
   );
 };
