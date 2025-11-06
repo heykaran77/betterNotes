@@ -3,7 +3,7 @@ import React from "react";
 const Features = () => {
   return (
     <div
-      className="my-6 flex items-center justify-center w-full h-screen"
+      className="my-12 flex items-center justify-center w-full h-screen"
       id="features">
       <div>
         <h1 className="text-3xl font-semibold text-center mx-auto tracking-tight">

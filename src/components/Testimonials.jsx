@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Testimonials = () => {
   const cardsData = [
@@ -63,7 +64,33 @@ const Testimonials = () => {
   return (
     <div
       id="reviews"
-      className="flex flex-col w-full items-center justify-center min-h-screen text-center px-4">
+      className="flex flex-col w-full items-center justify-center min-h-screen text-center px-4 mt-12 md:m-0">
+      <div className="mb-6">
+        <h4 className="text-3xl md:text-5xl mx-auto font-semibold tracking-[-2.5px] bg-linear-to-r from-neutral-800 via-neutral-600 to-neutral-400  bg-clip-text text-transparent max-w-2xl">
+          Simple. Fast. Trusted by thousands.
+        </h4>
+      </div>
+      {/* badge */}
+      <div className="flex flex-wrap items-center justify-center p-1 rounded-full bg-white border border-gray-300 text-sm">
+        <div className="flex items-center">
+          <img
+            className="w-[30px] rounded-full border-3 border-white"
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=50"
+            alt="userImage1"
+          />
+          <img
+            className="w-[30px] rounded-full border-3 border-white -translate-x-2"
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50"
+            alt="userImage2"
+          />
+          <img
+            className="w-[30px] rounded-full border-3 border-white -translate-x-4"
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=50&h=50&auto=format&fit=crop"
+            alt="userImage3"
+          />
+        </div>
+        <p className="-translate-x-2">Trusted by 10,000+ people</p>
+      </div>
       <style>{`
             @keyframes marqueeScroll {
                 0% { transform: translateX(0%); }
@@ -98,6 +125,11 @@ const Testimonials = () => {
         </div>
         <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
       </div>
+      <Link to="/login">
+        <button className="mt-4 bg-linear-to-r from-neutral-800 to-neutral-600 px-5 py-3 rounded-full text-sm text-white font-medium ring ring-neutral-500 ring-offset-1">
+          Try Now!
+        </button>
+      </Link>
     </div>
   );
 };
