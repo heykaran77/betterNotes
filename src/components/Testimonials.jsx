@@ -64,7 +64,7 @@ const Testimonials = () => {
   return (
     <div
       id="reviews"
-      className="flex flex-col w-full items-center justify-center min-h-screen text-center px-4 mt-12 md:m-0">
+      className="flex flex-col w-full items-center justify-center min-h-screen text-center px-4 mt-32 md:m-0">
       <div className="mb-6">
         <h4 className="text-3xl md:text-5xl mx-auto font-semibold tracking-[-2.5px] bg-linear-to-r from-neutral-800 via-neutral-600 to-neutral-400  bg-clip-text text-transparent max-w-2xl">
           Simple. Fast. Trusted by thousands.

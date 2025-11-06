@@ -41,18 +41,6 @@ const NavBar = () => {
             }>
             Dashboard
           </NavLink>
-          <NavLink
-            end
-            to="/about"
-            className={({ isActive }) =>
-              `font-medium px-3 py-2 rounded-full ${
-                isActive
-                  ? "text-primary border-2 border-orange-400"
-                  : "text-neutral-600 hover:text-neutral-900"
-              }`
-            }>
-            About
-          </NavLink>
         </div>
         {localStorage.getItem("token") ? (
           <Button variant="outline" onClick={handleLogout}>
